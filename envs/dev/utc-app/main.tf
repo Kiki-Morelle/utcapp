@@ -39,10 +39,6 @@ module "compute" {
   instance_profile_name     = module.iam.ec2_instance_profile_name
 }
 
-module "nat" {
-  source            = "../../../modules/nat"
-  public_subnet_id  = module.networking.public_subnet_ids[0]
-}
 
 
 module "storage" {
