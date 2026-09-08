@@ -15,3 +15,32 @@ data "http" "my_ip" {
 
 
 
+resource "aws_launch_template" "app_lt" {
+  name_prefix   = var.launch_template_name
+  image_id      = var.ami_id
+  instance_type = var.instance_type
+
+  network_interfaces {
+    security_groups = [var.ec2_sg_id]
+  }
+
+ 
+  iam_instance_profile {
+    name = var.instance_profile_name
+  }
+}
+
+
+resource "aws_autoscaling_group" "app_asg" {
+  desired_capacity     = 2
+  max_size             = 4
+  min_size             = 1
+  vpc_zone_identifier  = var.private_subnet_ids
+  launch_template {
+    id      = aws_launch_template.app_lt.id
+    version = "$Latest"
+  }
+
+}
+
+

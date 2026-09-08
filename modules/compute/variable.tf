@@ -17,3 +17,20 @@ variable "ec2_sg_id" {
   description = "EC2 security group ID"
   type        = string
 }
+
+variable "launch_template_name" {
+  description = "Name of the launch template"
+  type        = string
+}
+
+variable "auto_scaling_group_name" {
+  description = "Name of the auto scaling group"
+  type        = string
+}
+
+
+
+variable "instance_profile_name" {
+  type        = string
+  description = "IAM instance profile name for EC2"
+}

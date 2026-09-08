@@ -10,3 +10,12 @@ output "private_app_subnet_ids" {
     aws_subnet.private_app_b.id
   ]
 }
+
+
+output "public_subnet_ids" {
+  description = "List of public subnet IDs"
+  value       = [
+    aws_subnet.public_a.id,
+    aws_subnet.public_b.id
+  ]
+}
