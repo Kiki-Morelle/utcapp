@@ -19,3 +19,8 @@ output "public_subnet_ids" {
     aws_subnet.public_b.id
   ]
 }
+
+output "nat_gateway_id" {
+  value       = aws_nat_gateway.nat.id
+  description = "ID of the NAT Gateway"
+}
